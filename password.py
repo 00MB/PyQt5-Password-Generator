@@ -1,13 +1,10 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'Password.ui'
-#
-# Created by: PyQt5 UI code generator 5.10.1
-#
-# WARNING! All changes made in this file will be lost!
+#3/6/20
+#PyQt5 password Generator
+#Created by 00MB
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QCursor
+import random
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -38,7 +35,7 @@ class Ui_MainWindow(object):
         self.PasswordDisplay.setObjectName("PasswordDisplay")
         self.PasswordDisplay.setReadOnly(True)
         font = QtGui.QFont()
-        font.setPointSize(20)
+        font.setPointSize(30)
         self.PasswordDisplay.setFont(font)
         self.PasswordDisplay.setStyleSheet('background-color: grey; color: white;')
 
@@ -66,6 +63,7 @@ class Ui_MainWindow(object):
         self.LengthInput.setFont(font)
         self.LengthInput.setObjectName("LengthInput")
         self.LengthInput.setStyleSheet('background-color: #c9c8c3;border-radius:0px;')
+        self.LengthInput.setRange(8,30)
 
         #SymbolNumberFrame
         self.SymNumFrame = QtWidgets.QFrame(self.centralwidget)
@@ -131,10 +129,24 @@ class Ui_MainWindow(object):
         self.SymbolsLabel.setText(_translate("MainWindow", "Include Symbols:"))
         self.NumbersLabel.setText(_translate("MainWindow", "Include Numbers:"))
 
-    def buttonClicked(self):
-        self.GenerateButton.setStyleSheet("background-color: blue;")
-        self.PasswordDisplay.setText("hellodsasadadsadsadsadsadsadsad")
+    def checkNumbers(self):
+        if self.NumbersBox.isChecked():
+            return True
+        return False
 
+    def buttonClicked(self):
+        chars = "hijklmnoABCDEFG"
+        nums = "0123456789"
+        sym = "?!£$%&"
+        self.GenerateButton.setStyleSheet("background-color: blue;")
+        if self.NumbersBox.isChecked() and "0" not in chars:
+            chars += nums
+        if self.SymbolsBox.isChecked() and "?" not in chars:
+            chars += sym
+        if self.NumbersBox.isChecked() and self.NumbersBox.isChecked() and "0" not in chars and "?" not in chars:
+            chars = nums + sym
+        Password = ''.join(random.choice(chars) for x in range(self.LengthInput.value()))
+        self.PasswordDisplay.setText(Password)
 
 if __name__ == "__main__":
     import sys
