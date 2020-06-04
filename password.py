@@ -25,29 +25,22 @@ class Ui_MainWindow(object):
         self.GenerateButton.setMaximumSize(QtCore.QSize(1677, 1677))
         self.GenerateButton.setSizeIncrement(QtCore.QSize(0, 0))
         self.GenerateButton.setObjectName("GenerateButton")
-        self.GenerateButton.setStyleSheet("""
-            background-color:grey; border-radius:25px;
-            border-style:solid;
-            border-width:2px;
-            border-color:black;""")
-        self.GenerateButton.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-
-        #AnswerField
-        self.AnswerField = QtWidgets.QScrollArea(self.centralwidget)
-        self.AnswerField.setGeometry(QtCore.QRect(30, 340, 701, 131))
-        self.AnswerField.setMaximumSize(QtCore.QSize(1677, 1677))
-        self.AnswerField.setSizeIncrement(QtCore.QSize(1, 1))
         font = QtGui.QFont()
         font.setPointSize(20)
-        self.AnswerField.setFont(font)
-        self.AnswerField.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
-        self.AnswerField.setWidgetResizable(True)
-        self.AnswerField.setObjectName("AnswerField")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 699, 115))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.AnswerField.setWidget(self.scrollAreaWidgetContents)
-        self.AnswerField.setStyleSheet('background-color:grey;')
+        self.GenerateButton.setFont(font)
+        self.GenerateButton.setStyleSheet("background-color: red;")
+        self.GenerateButton.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.GenerateButton.clicked.connect(self.buttonClicked)
+
+        #PasswordDisplay
+        self.PasswordDisplay = QtWidgets.QTextEdit(self.centralwidget)
+        self.PasswordDisplay.setGeometry(QtCore.QRect(30, 340, 701, 131))
+        self.PasswordDisplay.setObjectName("PasswordDisplay")
+        self.PasswordDisplay.setReadOnly(True)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.PasswordDisplay.setFont(font)
+        self.PasswordDisplay.setStyleSheet('background-color: grey; color: white;')
 
         #LengthFrame
         self.LengthFrame = QtWidgets.QFrame(self.centralwidget)
@@ -136,6 +129,9 @@ class Ui_MainWindow(object):
         self.SymbolsLabel.setText(_translate("MainWindow", "Include Symbols:"))
         self.NumbersLabel.setText(_translate("MainWindow", "Include Numbers:"))
 
+    def buttonClicked(self):
+        self.GenerateButton.setStyleSheet("background-color: blue;")
+        self.PasswordDisplay.setText("hellodsasadadsadsadsadsadsadsad")
 
 
 if __name__ == "__main__":
