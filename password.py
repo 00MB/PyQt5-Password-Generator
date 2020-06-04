@@ -98,6 +98,7 @@ class Ui_MainWindow(object):
         self.NumbersBox.setIconSize(QtCore.QSize(50, 50))
         self.NumbersBox.setChecked(False)
         self.NumbersBox.setObjectName("NumbersBox")
+        self.NumbersBox.setStyleSheet("QCheckBox::indicator { width: 30px; height: 30px;}")
 
         #SymbolsBox
         self.SymbolsBox = QtWidgets.QCheckBox(self.SymNumFrame)
@@ -106,6 +107,7 @@ class Ui_MainWindow(object):
         self.SymbolsBox.setIconSize(QtCore.QSize(50, 50))
         self.SymbolsBox.setChecked(False)
         self.SymbolsBox.setObjectName("SymbolsBox")
+        self.SymbolsBox.setStyleSheet("QCheckBox::indicator { width: 30px; height: 30px;}")
 
         #MenuBar
         MainWindow.setCentralWidget(self.centralwidget)
