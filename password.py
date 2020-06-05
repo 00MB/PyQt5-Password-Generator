@@ -123,7 +123,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setStyleSheet("background-color: #303030;")
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle("Secure Password Generator")
         self.GenerateButton.setText(_translate("MainWindow", "Generate"))
         self.LengthLabel.setText(_translate("MainWindow", "Length of Password:"))
         self.SymbolsLabel.setText(_translate("MainWindow", "Include Symbols:"))
